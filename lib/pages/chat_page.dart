@@ -19,12 +19,25 @@ class ChatPage extends StatelessWidget {
         builder: (context, AsyncSnapshot<List<Message>> snapshot) {
           if (snapshot.hasError) return RedError(snapshot.error);
           if (!snapshot.hasData) return Loading();
-          return Column(
+          return Stack(
             children: <Widget>[
-              Expanded(child: MessageList(messages: snapshot.data)),
-              MessageBox(onSend: (text) {
-                db.sendMessage(group.id, Message(text));
-              }),
+              LayoutBuilder(
+                builder: (context, BoxConstraints constraints) {
+                  return Image.asset(
+                    'assets/background.jpg',
+                    width: constraints.maxWidth,
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+              Column(
+                children: <Widget>[
+                  Expanded(child: MessageList(messages: snapshot.data)),
+                  MessageBox(onSend: (text) {
+                    db.sendMessage(group.id, Message(text));
+                  }),
+                ],
+              ),
             ],
           );
         },
