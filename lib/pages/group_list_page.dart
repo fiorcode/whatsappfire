@@ -5,8 +5,8 @@ import 'package:whatsappfire/widgets/groups_list.dart';
 import 'package:whatsappfire/widgets/loading.dart';
 import 'package:whatsappfire/widgets/red_error.dart';
 
-class GroupPage extends StatelessWidget {
-  const GroupPage({
+class GroupListPage extends StatelessWidget {
+  const GroupListPage({
     Key key,
   }) : super(key: key);
 

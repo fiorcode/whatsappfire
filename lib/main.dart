@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsappfire/pages/chat_page.dart';
-import 'package:whatsappfire/pages/group_page.dart';
+import 'package:whatsappfire/pages/group_list_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (_) => GroupPage(),
+        '/': (_) => GroupListPage(),
         '/chat': (_) => ChatPage(),
       },
     );
