@@ -12,9 +12,8 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Group group = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(group.name),
-      ),
+      appBar: AppBar(title: Text(group.name)),
+      backgroundColor: Colors.teal[100],
       body: StreamBuilder(
         stream: db.getGroupMessages(group.id),
         builder: (context, AsyncSnapshot<List<Message>> snapshot) {
@@ -33,4 +32,3 @@ class ChatPage extends StatelessWidget {
     );
   }
 }
-
