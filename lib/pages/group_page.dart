@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsappfire/db.dart' as db;
 import 'package:whatsappfire/model/group.dart';
+import 'package:whatsappfire/widgets/group_tile.dart';
 
 class GroupPage extends StatelessWidget {
   const GroupPage({
@@ -31,11 +32,17 @@ class GroupPage extends StatelessWidget {
             );
           }
           List<Group> groups = snapshot.data;
-          return ListView.builder(
+          return ListView.separated(
             itemCount: groups.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(groups[index].name),
+              final Group group = groups[index];
+              return GroupTile(group: group);
+            },
+            separatorBuilder: (context, index) {
+              return Divider(
+                height: 1,
+                indent: 75,
+                endIndent: 25,
               );
             },
           );
