@@ -7,6 +7,10 @@ Stream<List<Group>> getGroups() =>
     Firestore.instance.collection('groups').snapshots().map(toGroupList);
 
 Stream<List<Message>> getGroupMessages(String groupId) => Firestore.instance
-    .collection('groups/$groupId/messages')
+    .collection('groups/$groupId/messages').orderBy('datetime', descending: true)
     .snapshots()
     .map(toMessageList);
+
+    Future<void> sendMessage(String groupId, Message msg) async {
+      Firestore.instance.collection('groups/$groupId/messages').add(msg.toFirestore());
+    }
